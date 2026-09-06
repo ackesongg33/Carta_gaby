@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para el amor de mi vida ❤️</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Cormorant Garamond', serif;
+
+            background:
+                radial-gradient(circle at top, #ffd6e7 0%, transparent 35%),
+                linear-gradient(135deg, #180914, #3b1028, #160812);
+
+            color: #fff;
+        }
+
+        /* =========================
+           FONDO
+        ========================= */
+
+        .background-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 75, 145, 0.15);
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        .glow1 {
+            top: -200px;
+            left: -150px;
+        }
+
+        .glow2 {
+            bottom: -200px;
+            right: -150px;
+        }
+
+        /* =========================
+           CORAZONES
+        ========================= */
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            opacity: 0;
+            animation: subir 8s linear infinite;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: .8;
+            }
+
+            85% {
+                opacity: .8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           PANTALLA INICIAL
+        ========================= */
+
+        .inicio {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .sobre-contenedor {
+            text-align: center;
+        }
+
+        .sobre-contenedor h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(38px, 8vw, 70px);
+            margin-bottom: 10px;
+        }
+
+        .sobre-contenedor p {
+            font-size: 20px;
+            opacity: .8;
+            margin-bottom: 35px;
+        }
+
+        .sobre {
+            width: 310px;
+            height: 210px;
+            position: relative;
+            margin: auto;
+            cursor: pointer;
+            transition: transform .4s ease;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,.4));
+        }
+
+        .sobre:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .sobre-cuerpo {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, #ff7eaa, #d52d6a);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .sobre-cuerpo::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                35deg,
+                transparent 49%,
+                rgba(255,255,255,.25) 50%,
+                transparent 51%
+            );
+        }
+
+        .sobre-tapa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 115px;
+            background: #ef4d82;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform 1s ease;
+            z-index: 3;
+        }
+
+        .sello {
+            position: absolute;
+            z-index: 5;
+            top: 83px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55px;
+            height: 55px;
+            background: #fff;
+            color: #d52d6a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.2);
+        }
+
+        .sobre-texto {
+            position: absolute;
+            bottom: 22px;
+            width: 100%;
+            text-align: center;
+            z-index: 4;
+            font-family: 'Dancing Script', cursive;
+            font-size: 26px;
+        }
+
+        /* =========================
+           CARTA
+        ========================= */
+
+        .carta-seccion {
+            display: none;
+            min-height: 100vh;
+            padding: 70px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .carta-seccion.mostrar {
+            display: block;
+            animation: aparecer 1.5s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .carta {
+            max-width: 850px;
+            margin: auto;
+            padding: clamp(30px, 6vw, 70px);
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,.96),
+                    rgba(255,245,249,.96)
+                );
+
+            color: #351524;
+
+            border-radius: 4px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.45),
+                0 0 0 1px rgba(255,255,255,.2);
+
+            position: relative;
+        }
+
+        .carta::before {
+            content: "❤";
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            color: #e34b7d;
+            font-size: 25px;
+            opacity: .5;
+        }
+
+        .titulo {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: #c72f63;
+            font-size: clamp(42px, 7vw, 65px);
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            font-size: 18px;
+            color: #9b526e;
+            margin-bottom: 45px;
+        }
+
+        .carta p {
+            font-size: 20px;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .destacado {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: #c72f63;
+            font-size: 32px !important;
+            margin: 35px 0 !important;
+        }
+
+        .firma {
+            text-align: right;
+            margin-top: 45px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 31px !important;
+            color: #c72f63;
+        }
+
+        .corazon-final {
+            text-align: center;
+            font-size: 55px;
+            margin-top: 20px;
+            animation: latido 1.4s infinite;
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* =========================
+           BOTÓN
+        ========================= */
+
+        .volver {
+            display: block;
+            margin: 45px auto 0;
+            padding: 14px 28px;
+
+            border: none;
+            border-radius: 50px;
+
+            background: linear-gradient(135deg, #e94d82, #b91f55);
+            color: white;
+
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+
+            cursor: pointer;
+
+            box-shadow: 0 10px 25px rgba(185,31,85,.3);
+            transition: .3s;
+        }
+
+        .volver:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(185,31,85,.4);
+        }
+
+        /* =========================
+           MÓVIL
+        ========================= */
+
+        @media(max-width:600px) {
+
+            .sobre {
+                width: 280px;
+                height: 190px;
+            }
+
+            .carta {
+                padding: 30px 22px;
+            }
+
+            .carta p {
+                font-size: 18px;
+                line-height: 1.75;
+            }
+
+            .titulo {
+                font-size: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-glow glow1"></div>
+    <div class="background-glow glow2"></div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <!-- =========================
+         PANTALLA INICIAL
+    ========================= -->
+
+    <section class="inicio" id="inicio">
+
+        <div class="sobre-contenedor">
+
+            <h1>Para el amor de mi vida ❤️</h1>
+
+            <p>Tengo algo que quiero decirte...</p>
+
+            <div class="sobre" onclick="abrirCarta()">
+
+                <div class="sobre-cuerpo"></div>
+
+                <div class="sobre-tapa" id="tapa"></div>
+
+                <div class="sello">
+                    ♥
+                </div>
+
+                <div class="sobre-texto">
+                    Para mi amor
+                </div>
+
+            </div>
+
+            <p style="margin-top:25px;">
+                Toca el sobre para abrirlo 💌
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CARTA
+    ========================= -->
+
+    <section class="carta-seccion" id="cartaSeccion">
+
+        <article class="carta">
+
+            <h1 class="titulo">
+                Para el amor de mi alma 
+            </h1>
+
+            <div class="subtitulo">
+                De alguien que te ama más de lo que a veces sabe explicar ❤️
+            </div>
+
+
+            <p>
+                No sé exactamente por dónde empezar, porque siento que ninguna
+                palabra alcanza para explicar todo lo que tengo dentro de mí.
+                Pero necesito intentarlo.
+            </p>
+
+            <p>
+                Necesito decirte primero algo que sale desde lo más profundo
+                de mi corazón:
+                <strong>perdóname.</strong>
+            </p>
+
+            <p>
+                Perdóname por las veces en las que fui malagradecido.
+                Perdóname por las veces en las que no supe valorar todo lo
+                que hacías por mí, tu cariño, tu paciencia, tus detalles y
+                simplemente el hecho de estar conmigo.
+            </p>
+
+            <p>
+                Hoy miro hacia atrás y me doy cuenta de que muchas veces
+                tuve frente a mí algo demasiado bonito y no supe cuidarlo
+                como debía.
+            </p>
+
+            <p class="destacado">
+                Tú has sido uno de los regalos más bonitos que me ha dado
+                la vida.
+            </p>
+
+            <p>
+                Y quiero que sepas que no estoy escribiendo esto solamente
+                para pedirte perdón.
+            </p>
+
+            <p>
+                Lo escribo porque quiero que conozcas lo que realmente
+                siento por ti.
+            </p>
+
+            <p>
+                Te amo.
+            </p>
+
+            <p>
+                Te amo muchísimo.
+            </p>
+
+            <p>
+                Te amo en nuestros momentos felices, en nuestras risas,
+                en nuestras conversaciones, en nuestras pequeñas
+                costumbres y también en los momentos difíciles.
+            </p>
+
+            <p>
+                Te adoro por quién eres, por tu forma de ser, por tu manera
+                de hablar, por tus ocurrencias, por tus gestos y por todas
+                esas pequeñas cosas que quizá para otras personas no
+                significan nada, pero que para mí significan muchísimo.
+            </p>
+
+            <p class="destacado">
+                Yo no te veo solamente como mi novia.
+                <br>
+                Te veo como mi compañera de vida.
+            </p>
+
+            <p>
+                Cuando pienso en mi futuro, apareces tú.
+            </p>
+
+            <p>
+                Pienso en todos los planes que todavía nos quedan.
+                En los lugares que queremos conocer, en las metas que
+                queremos alcanzar y en todos esos recuerdos que todavía
+                podemos construir.
+            </p>
+
+            <p>
+                Pienso en una casa que algún día podamos llamar nuestra.
+                Pienso en despertar y saber que la persona que amo está
+                a mi lado.
+            </p>
+
+            <p>
+                Pienso en construir una familia contigo.
+            </p>
+
+            <p>
+                Pienso en casarme contigo.
+            </p>
+
+            <p class="destacado">
+                Sí, amor.
+                <br>
+                Yo quiero casarme contigo.
+            </p>
+
+            <p>
+                Quiero algún día mirarte y saber que después de tantos
+                momentos, tantas alegrías, tantos problemas y tantos
+                aprendizajes, seguimos eligiéndonos.
+            </p>
+
+            <p>
+                Quiero que seas la persona con la que envejezca.
+            </p>
+
+            <p>
+                Quiero que algún día podamos mirar hacia atrás y decir:
+                “Pasamos por muchísimo, pero seguimos aquí”.
+            </p>
+
+            <p>
+                No quiero una historia perfecta.
+            </p>
+
+            <p class="destacado">
+                Quiero nuestra historia.
+            </p>
+
+            <p>
+                Una historia real.
+                Con errores.
+                Con lágrimas.
+                Con risas.
+                Con discusiones.
+                Con reconciliaciones.
+                Con aprendizajes.
+                Y, sobre todo, con muchísimo amor.
+            </p>
+
+            <p>
+                He entendido que amar a alguien no significa solamente
+                decir “te amo”.
+            </p>
+
+            <p>
+                Amar también significa aprender a cuidar, escuchar,
+                respetar, agradecer y cambiar cuando sabes que algo que
+                haces está lastimando a la persona que amas.
+            </p>
+
+            <p>
+                Y eso es algo que quiero aprender contigo.
+            </p>
+
+            <p class="destacado">
+                Quiero aprender a amarte mejor.
+            </p>
+
+            <p>
+                No porque hoy te quiera menos, sino precisamente porque
+                te quiero demasiado como para seguir cometiendo los mismos
+                errores.
+            </p>
+
+            <p>
+                Como decía Rilke en sus reflexiones sobre el amor,
+                amar también implica crecer y aprender a ser una mejor
+                persona junto al otro.
+            </p>
+
+            <p>
+                Y eso quiero hacer contigo.
+                Crecer.
+                Madurar.
+                Aprender.
+                Y convertirme en alguien que esté a la altura del amor
+                que tú me has dado.
+            </p>
+
+            <p>
+                No quiero simplemente recuperar lo que teníamos.
+            </p>
+
+            <p class="destacado">
+                Quiero construir algo todavía más bonito contigo.
+            </p>
+
+            <p>
+                Quiero que algún día podamos mirar atrás y entender que
+                este momento no fue el final de nuestra historia, sino
+                el momento en el que decidimos luchar por ella.
+            </p>
+
+            <p>
+                No te prometo que nunca voy a equivocarme.
+                Sería mentira.
+            </p>
+
+            <p>
+                Pero sí quiero prometerte que voy a esforzarme por ser
+                mejor.
+            </p>
+
+            <p>
+                Voy a aprender de mis errores.
+                Voy a escucharte más.
+                Voy a valorar cada detalle.
+                Voy a cuidar más tus sentimientos.
+                Y voy a intentar demostrarte con hechos todo aquello que
+                hoy estoy intentando explicarte con palabras.
+            </p>
+
+            <p>
+                Porque tú mereces sentirte amada, valorada, respetada y
+                segura del lugar que tienes en mi vida.
+            </p>
+
+            <p>
+                Y quiero que ese lugar siga siendo especial.
+            </p>
+
+            <p class="destacado">
+                Yo te elegiría otra vez.
+            </p>
+
+            <p>
+                Te elegiría después de conocerte.
+                Te elegiría después de nuestros errores.
+                Te elegiría después de nuestras peleas.
+                Te elegiría después de nuestros momentos difíciles.
+            </p>
+
+            <p>
+                Y te elegiría porque, incluso después de todo lo que hemos
+                vivido, cuando pienso en la persona con la que quiero
+                compartir mi vida, mi corazón sigue pensando en ti.
+            </p>
+
+            <p>
+                Quiero volver a estar bien contigo.
+            </p>
+
+            <p>
+                Quiero volver a reír contigo.
+                Quiero volver a hacer planes.
+                Quiero volver a ilusionarme contigo.
+                Quiero seguir creando recuerdos contigo.
+            </p>
+
+            <p>
+                Y sobre todo, quiero que puedas volver a sentir que tienes
+                a alguien dispuesto a cuidarte y luchar por ustedes.
+            </p>
+
+            <p class="destacado">
+                No quiero que mi amor por ti se quede en esta carta.
+            </p>
+
+            <p>
+                Quiero que se convierta en acciones.
+                En paciencia.
+                En detalles.
+                En tiempo.
+                En respeto.
+                En cambios.
+                En abrazos.
+                En cada día que tengamos la oportunidad de compartir.
+            </p>
+
+            <p>
+                Porque si algo tengo claro después de todo esto es que no
+                quiero perderte por no haber sabido valorar lo que tenía.
+            </p>
+
+            <p class="destacado">
+                Te amo, mi amor.
+            </p>
+
+            <p>
+                Te amo con todo lo que soy.
+                Te adoro con todo mi corazón.
+            </p>
+
+            <p>
+                Y si la vida me da la oportunidad de seguir caminando
+                a tu lado, quiero hacerlo.
+            </p>
+
+            <p>
+                Quiero caminar contigo hacia nuestros sueños.
+                Quiero celebrar tus logros como si fueran míos.
+                Quiero estar cuando tengas miedo.
+                Quiero abrazarte cuando estés triste.
+                Quiero reír contigo cuando estés feliz.
+            </p>
+
+            <p>
+                Quiero ser tu compañero, tu apoyo, tu mejor amigo y,
+                algún día, tu esposo.
+            </p>
+
+            <p class="destacado">
+                Porque yo no quiero solamente amarte por un tiempo.
+                <br>
+                Quiero amarte durante toda mi vida.
+            </p>
+
+            <p>
+                Y si algún día llegamos a viejitos, quiero mirar hacia
+                atrás y saber que, entre millones de personas y millones
+                de caminos posibles, nosotros nos encontramos, nos amamos,
+                nos equivocamos, aprendimos y finalmente decidimos
+                quedarnos.
+            </p>
+
+            <p>
+                Así que hoy no quiero pedirte solamente que olvides mis
+                errores.
+            </p>
+
+            <p>
+                Quiero pedirte la oportunidad de demostrarte que puedo
+                aprender de ellos.
+            </p>
+
+            <p>
+                Quiero que podamos volver a construir.
+            </p>
+
+            <p class="destacado">
+                Poco a poco.
+                <br>
+                Sin promesas vacías.
+                <br>
+                Sin palabras bonitas que no tengan acciones detrás.
+                <br>
+                Solo tú y yo.
+                <br>
+                Intentándolo.
+                <br>
+                Eligiéndonos.
+                <br>
+                Amándonos.
+            </p>
+
+            <p>
+                Y construyendo ese futuro que tantas veces imaginamos
+                juntos.
+            </p>
+
+            <p class="destacado">
+                Te amo, mi vida. ❤️
+            </p>
+
+            <p>
+                Y pase lo que pase, quiero que nunca olvides algo:
+                fuiste, eres y seguirás siendo una de las personas más
+                importantes que ha llegado a mi vida.
+            </p>
+
+            <p>
+                Y si tengo la oportunidad de seguir escribiendo nuestra
+                historia, quiero que el próximo capítulo sea mucho más
+                bonito que los anteriores.
+            </p>
+
+            <p class="firma">
+                Con todo mi amor,<br>
+                el hombre que todavía sueña con un futuro a tu lado. ❤️
+            </p>
+
+            <div class="corazon-final">
+                ❤️
+            </div>
+
+            <button class="volver" onclick="volverInicio()">
+                Volver a leer desde el principio 💌
+            </button>
+
+        </article>
+
+    </section>
+
+
+    <script>
+
+        /* =========================
+           ABRIR CARTA
+        ========================= */
+
+        function abrirCarta() {
+
+            const tapa = document.getElementById("tapa");
+            const inicio = document.getElementById("inicio");
+            const carta = document.getElementById("cartaSeccion");
+
+            tapa.style.transform = "rotateX(180deg)";
+
+            crearCorazones();
+
+            setTimeout(() => {
+
+                inicio.style.display = "none";
+                carta.classList.add("mostrar");
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }, 900);
+        }
+
+
+        /* =========================
+           CORAZONES FLOTANTES
+        ========================= */
+
+        function crearCorazones() {
+
+            const contenedor = document.getElementById("hearts");
+
+            const simbolos = ["❤️", "💕", "💗", "💖", "💘"];
+
+            for (let i = 0; i < 35; i++) {
+
+                const corazon = document.createElement("div");
+
+                corazon.className = "heart";
+
+                corazon.innerHTML =
+                    simbolos[Math.floor(Math.random() * simbolos.length)];
+
+                corazon.style.left =
+                    Math.random() * 100 + "vw";
+
+                corazon.style.fontSize =
+                    (12 + Math.random() * 22) + "px";
+
+                corazon.style.animationDuration =
+                    (5 + Math.random() * 6) + "s";
+
+                corazon.style.animationDelay =
+                    Math.random() * 6 + "s";
+
+                contenedor.appendChild(corazon);
+            }
+        }
+
+
+        /* =========================
+           VOLVER
+        ========================= */
+
+        function volverInicio() {
+
+            document.getElementById("cartaSeccion")
+                .classList.remove("mostrar");
+
+            document.getElementById("inicio")
+                .style.display = "flex";
+
+            document.getElementById("tapa")
+                .style.transform = "rotateX(0deg)";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+    </script>
+
+</body>
+</html>
+
